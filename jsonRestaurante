@@ -1,0 +1,47 @@
+[ 
+    {
+        "id": "1",
+        "nombre" : "coco",
+        "imagen" : "aaa",
+        "alergenos" : [
+            {
+                "id" : "1"
+            },
+            {
+                "id" : "2"
+            }
+        ],
+        "precio" : 12,
+        "descripcion" : "coco coco coco coco"
+    },
+    {
+        "id": "2",
+        "nombre" : "coco2",
+        "imagen" : "aaa",
+        "alergenos" : [
+            {
+                "id" : "1"
+            },
+            {
+                "id" : "2"
+            }
+        ],
+        "precio" : 12,
+        "descripcion" : "coco coco coco coco"
+    },
+    {
+        "id": "3",
+        "nombre" : "coco3",
+        "imagen" : "aaa",
+        "alergenos" : [
+            {
+                "id" : "1"
+            },
+            {
+                "id" : "2"
+            }
+        ],
+        "precio" : 12,
+        "descripcion" : "coco coco coco coco"
+    }
+]

@@ -7,18 +7,29 @@ import java.util.ArrayList;
  * Created by Agustin on 22/09/2015.
  */
 public class Plato implements Serializable{
+    private String mId;
     private String mNombre;
     private String mImagen;
     private ArrayList<String> mAlergenos;
     private int mPrecio;
     private String mDescripcion;
 
-    public Plato(String nombre, String imagen, ArrayList<String> alergenos, int precio, String descripcion) {
+
+    public Plato(String id, String nombre, String imagen, ArrayList<String> alergenos, int precio, String descripcion) {
+        mId = id;
         mNombre = nombre;
         mImagen = imagen;
         mAlergenos = alergenos;
         mPrecio = precio;
         mDescripcion = descripcion;
+    }
+
+    public String getId() {
+        return mId;
+    }
+
+    public void setId(String id) {
+        mId = id;
     }
 
     public String getNombre() {

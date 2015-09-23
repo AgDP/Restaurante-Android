@@ -43,8 +43,6 @@ public class Mesa implements Serializable{
 
     @Override
     public String toString() {
-        return "Mesa{" +
-                "mNumeroMesa=" + mNumeroMesa +
-                '}';
+        return "Mesa " + mNumeroMesa;
     }
 }
