@@ -1,8 +1,47 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="toolbarStyle">@style/RestauranteToolbar</item>
     </style>
 
+    <style name="RestauranteToolbar" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:background">@color/toolbarBackground</item>
+        <item name="elevation">10dp</item>
+        <item name="android:minHeight">?android:attr/actionBarSize</item>
+        <item name="titleTextAppearance">@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse</item>
+
+        <item name="android:gravity">center_vertical</item>
+
+        <item name="contentInsetStart">@dimen/abc_action_bar_content_inset_material</item>
+        <item name="contentInsetEnd">@dimen/abc_action_bar_content_inset_material</item>
+
+        <item name="popupTheme">@style/RestauranteToolbar.Popup</item>
+    </style>
+
+    <style name="RestauranteToolbar.Popup">
+        <item name="android:background">@color/toolbarPopupBackground</item>
+    </style>
+
+    <!-- Modos noche -->
+    <style name="AppTheme.Night" parent="AppTheme">
+        <item name="colorPrimary">@color/colorPrimaryNight</item>
+        <item name="colorAccent">@color/colorAccentNight</item>
+        <item name="colorPrimaryDark">@color/colorAccentNight</item>
+        <item name="android:colorBackground">@color/nightBackground</item>
+        <item name="toolbarStyle">@style/RestauranteToolbar.Night</item>
+    </style>
+
+    <style name="RestauranteToolbar.Night" parent="RestauranteToolbar">
+        <item name="android:background">@color/toolbarNightBackground</item>
+        <item name="popupTheme">@style/RestauranteToolbar.Popup.Night</item>
+    </style>
+
+    <style name="RestauranteToolbar.Popup.Night" parent="RestauranteToolbar.Popup">
+        <item name="android:background">@color/toolbarPopupNightBackground</item>
+    </style>
 </resources>

@@ -50,7 +50,7 @@ public class MesasListFragment extends Fragment {
                 android.R.layout.simple_list_item_1, // Recuerda que esto es el layout de cada fila
                 restaurante.getMesas());
         list.setAdapter(adapter);
-       list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (mListener != null) {

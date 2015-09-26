@@ -121,4 +121,8 @@ public class Restaurante {
     public ArrayList<Mesa> getMesas() {
         return mMesas;
     }
+
+    public ArrayList<Plato> getPlatos() {
+        return mPlatos;
+    }
 }

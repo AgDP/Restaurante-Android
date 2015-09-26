@@ -1,13 +1,18 @@
 package com.dotta.agustin.restaurante.activity;
 
+
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.transition.Explode;
+import android.transition.Slide;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
 
 import com.dotta.agustin.restaurante.R;
 import com.dotta.agustin.restaurante.fragment.MesasListFragment;
@@ -19,8 +24,9 @@ import org.json.JSONException;
 
 import java.io.IOException;
 
-public class MainActivity extends AppCompatActivity implements MesasListFragment.MesasListListener{
+public class PlatosListActivity extends AppCompatActivity {
 
+    private Mesa mMesa;
     private Restaurante mRestaurante;
     private DefaultThemeDecorator mThemeDecorator;
 
@@ -30,8 +36,19 @@ public class MainActivity extends AppCompatActivity implements MesasListFragment
         mThemeDecorator = new DefaultThemeDecorator(this);
         mThemeDecorator.setDefaultTheme();
 
+        // Indicamos la animación de entrada, y la de regreso a la anterior
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+            Explode explode = new Explode();
+            explode.setDuration(1000);
+            getWindow().setEnterTransition(explode);
+
+            Slide slide = new Slide(Gravity.RIGHT);
+            slide.setDuration(1000);
+            getWindow().setReturnTransition(slide);
+        }
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         try {
             mRestaurante = Restaurante.getInstance(this);
@@ -40,6 +57,8 @@ public class MainActivity extends AppCompatActivity implements MesasListFragment
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        mMesa = mRestaurante.getMesas().get(getIntent().getIntExtra(MesaDetalleActivity.MESA_DETALLE_INDEX,0));
 
         FragmentManager fm = getFragmentManager();
 
@@ -76,19 +95,6 @@ public class MainActivity extends AppCompatActivity implements MesasListFragment
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onMesaSelected(Mesa mesa, int index) {
-        Intent mesaDealleIntent = new Intent(this, MesaDetalleActivity.class);
-        mesaDealleIntent.putExtra(MesaDetalleActivity.MESA_DETALLE_INDEX, index);
-        // Animación de transición
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            //noinspection unchecked
-            startActivity(mesaDealleIntent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle());
-        }
-        else {
-            startActivity(mesaDealleIntent);
-        }
-    }
 
     @Override
     protected void onResume() {
